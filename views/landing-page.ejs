@@ -24,13 +24,13 @@
         /* Control the left side */
         .left {
             left: 0;
-            background-color: white;
+            background-color: #E58D2E;
         }
 
         /* Control the right side */
         .right {
             right: 0;
-            background-color: black;
+            background-color: #2c6d8b;
         }
 
         /* If you want the content centered horizontally and vertically */
@@ -49,16 +49,21 @@
         }
 
         .btn-light{
-            btn-bg: #45ADFF
+            background-color: #2c6d8b;
+            color:white
+        }
+
+        .btn-dark{
+            background-color: #E58D2E;
         }
        
     </style>
     <div class="split left">
         <div class="centered">
-            <h2 style="color:black">Don't have an account?</h2>
-            <h5>Join Tw8ter Now!</h5>
-            <form>
-                <button type="submit" class="btn btn-light">Log In</button>
+            <h2 style="color:white">Don't have an account?</h2>
+            <h5 style="color:white">Join Tw8ter Now!</h5>
+            <form action="/register">
+                <button type="submit" class="btn btn-light">Sign Up</button>
             </form>
         </div>
     </div>
@@ -67,8 +72,8 @@
         <div class="centered">
             <h2 style="color:white">Already have an account?</h2>
             <h5 style="color:white">Login to your account.</h5>
-            <form>
-                <button type="submit" class="btn btn-light">Log In</button>
+            <form action="/login">
+                <button type="submit" class="btn btn-dark">Log In</button>
             </form>
         </div>
     </div>

@@ -9,45 +9,78 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-color: #E58D2E">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #E58D2E;
+            display: flex;
+        }
+
         .container {
+            margin: auto;
+            width: 500px;
+            max-width: 90%;
             text-align: center;
-            margin-top: 50px;
+        }
+
+        .container form {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background-color: #2c6d8b;
+            border-radius: 4px;
+        }
+
+        .btn-dark {
+            background-color: #E58D2E;
+        }
+
+
+        h1 {
+            color: white;
         }
     </style>
     <div class="container">
-        <h1> Join Tw8ter Now </h1><br>
+        <h1> Create an account </h1><br>
         <form action="/register" method="post">
             <div class="row mx-auto" style="width: 420px;">
-                <div class="col">
-                    <label for="username" class="form-label">First Name</label>
+                <div class="col form-group">
+                    <label for="username" class="form-label" style="color:white">First Name</label>
                     <input type="text" class="form-control" name="firstName" aria-label="First name">
                 </div>
-                <div class="col">
-                    <label for="username" class="form-label">Last Name</label>
+                <div class="col form-group">
+                    <label for="username" class="form-label" style="color:white">Last Name</label>
                     <input type="text" class="form-control" name="lastName" aria-label="Last name">
                 </div>
             </div><br>
-            <div class="mx-auto" style="width: 400px;">
-                <label for="username" class="form-label">Username</label>
+            <div class="mx-auto form-group" style="width: 400px;">
+                <label for="username" class="form-label" style="color:white">Username</label>
                 <input type="text" name="username" class="form-control" id="username">
             </div><br>
-            <div class="mx-auto" style="width: 400px;">
-                <label for="email" class="form-label">Email</label>
+            <div class="mx-auto form-group" style="width: 400px;">
+                <label for="email" class="form-label" style="color:white">Email</label>
                 <input type="email" name="email" class="form-control" id="email">
             </div><br>
-            <div class="mx-auto" style="width: 400px;">
-                <label for="password" class="form-label">Password</label>
+            <div class="mx-auto form-group" style="width: 400px;">
+                <label for="password" class="form-label" style="color:white">Password</label>
                 <input type="password" name="password" class="form-control" id="password">
             </div><br>
-            <label for="role" class="form-label">Role</label>
-            <select class="form-select mx-auto" name="role" style="width: 400px;" aria-label="Default select example">
+            <label for="role" class="form-label form-group" style="color:white">Role</label>
+            <select class="form-select mx-auto form-group" name="role" style="width: 400px;"
+                aria-label="Default select example">
                 <option selected disabled>-- SELECT ROLE --</option>
                 <option value="Admin">Admin</option>
                 <option value="user">User</option>
             </select><br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-dark">Register</button>
         </form>
     </div>
 
