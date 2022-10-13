@@ -18,6 +18,30 @@ class Controller {
                 res.send(err)
             })
     }
+    static renderEdit(req,res){
+        let id = req.params.id
+        Profile.findOne({
+            where: id
+        })
+        .then((profile)=>{
+            res.render('profile-custom', {profile})
+        })
+    }
+    static handlerEdit(req,res){
+        let id = req.params.id
+        let {profilePicture, firstName, lastName} = req.body
+        Profile.update({
+            profilePicture, firstName, lastName
+        },{
+            where : id
+        })
+        .then((profile)=>{
+            res.redirect('/home')
+        })
+        .catch((err)=>{
+            res.send(err)
+        })
+    }
 }
 
 module.exports = Controller

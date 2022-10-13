@@ -24,6 +24,16 @@ class Controller{
             res.render('home', { userData, profileData, data})
         })
     }
+    static postPost(req,res){
+        let {title, content, imageUrl} = req.body
+        Profile.create({title, content, imageUrl, UserId : req.session.userId})
+        .then((data)=>{
+            res.redirect('/home')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
 }
 
 module.exports = Controller
