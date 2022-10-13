@@ -57,6 +57,15 @@ class Controller {
             res.send(err)
         })
     }
+    static logout(req, res) {
+        req.session.destroy((err) => {
+            if(err) {
+                res.send(err)
+            } else {
+                res.redirect('/')
+            }
+        })
+    }
     static home(req,res){
         let userData
         let profileData
@@ -66,7 +75,6 @@ class Controller {
         })
         .then((data)=>{
             userData = data
-            console.log(data)
             return Profile.findAll()
         })
         .then((data)=>{
