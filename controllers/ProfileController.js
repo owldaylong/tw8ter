@@ -20,25 +20,31 @@ class Controller {
     }
     static renderEdit(req,res){
         let id = req.params.id
-        Profile.findOne({
-            where: id
-        })
+        Profile.findByPk(id)
+        // Profile.findOne({
+        //     where: id
+        // })
         .then((profile)=>{
             res.render('profile-custom', {profile})
         })
     }
     static handlerEdit(req,res){
         let id = req.params.id
-        let {profilePicture, firstName, lastName} = req.body
+        let {filename} = req.file
+        let { firstName, lastName} = req.body
+
         Profile.update({
-            profilePicture, firstName, lastName
+            profilePicture:filename,firstName, lastName, UserId:id,
         },{
-            where : id
+            where : {
+                id
+            },
         })
         .then((profile)=>{
             res.redirect('/home')
         })
         .catch((err)=>{
+            console.log(err);
             res.send(err)
         })
     }

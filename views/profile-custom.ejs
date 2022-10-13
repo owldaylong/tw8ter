@@ -15,7 +15,7 @@
     </style>
     <div class ="container">
         <h1> Customize your profile </h1><br>
-        <form action="/profile" method="post">
+        <form method="post" enctype="multipart/form-data">
             <!-- <label for="profilePicture" class="form-label">Upload Profile Picture</label>
             <div class="input-group mx-auto" style="width: 400px;">
                 <input type="file" class="form-control" id="upload" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
@@ -23,15 +23,15 @@
               </div><br> -->
             <div class="mx-auto" style="width: 400px;">
               <label for="profilePicture" class="form-label">Profile Picture</label>
-              <input type="text" name="profilePicture" class="form-control" id="profilePicture">
+              <input type="file" name="profilePicture" class="form-control" id="profilePicture">
             </div><br>
             <div class="mx-auto" style="width: 400px;">
               <label for="firstName" class="form-label">First Name</label>
-              <input type="text"  name="firstName" class="form-control" id="firstName">
+              <input type="text"  name="firstName" class="form-control" id="firstName" value="<%= profile.firstName %>">
             </div><br>
             <div class="mx-auto" style="width: 400px;">
               <label for="lastName" class="form-label">Last Name</label>
-              <input type="text" name="lastName" class="form-control" id="lastName">
+              <input type="text" name="lastName" class="form-control" id="lastName" value="<%= profile.lastName %>">
             </div><br>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
