@@ -22,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: 'Fill the first name'},
         notEmpty: {msg: 'Fill the first name'},
-        max: {
-          args: [20],
-          msg: 'Maximum allowed characters are 20'
-        }
+        isLength(x){
+          if (x.length > 15) {
+            throw new Error('Maximum allowed characters are 15')
+          }
+        },
       },
     },
     lastName: {
@@ -34,10 +35,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: 'Fill the last name'},
         notEmpty: {msg: 'Fill the last name'},
-        max: {
-          args: [20],
-          msg: 'Maximum allowed characters are 20'
-        }
+        isLength(x){
+          if (x.length > 15) {
+            throw new Error('Maximum allowed characters are 15')
+          }
+        },
       },
     },
     UserId: {

@@ -22,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: 'Fill the content'},
         notEmpty: {msg: 'Fill the content'},
-        max: {
-          args: [280],
-          msg: 'Maximum allowed characters are 280'
-        }
+        isLength(post){
+          if (post.length > 280) {
+            throw new Error('Maximum allowed characters are 280')
+          }
+        },
       },
     },
     imgURL: {

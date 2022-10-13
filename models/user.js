@@ -44,14 +44,13 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: 'Fill the password'},
         notEmpty: {msg: 'Fill the password'},
-        max: {
-          args: [15],
-          msg: 'Maximum allowed password are 15'
+        isLength(pass){
+          if (pass.length > 15) {
+            throw new Error('Maximum allowed password are 15')
+          } else if (pass.length < 8) {
+            throw new Error('Minimum allowed password are 8')
+          }
         },
-        min:{
-          args: [8],
-          msg: 'Minimum allowed password are 8'
-        }
       },
     },
     role: {
