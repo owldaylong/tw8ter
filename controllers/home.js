@@ -26,7 +26,7 @@ class Controller{
     }
     static postPost(req,res){
         let {title, content, imageUrl} = req.body
-        Profile.create({title, content, imageUrl, UserId : req.session.userId})
+        Post.create({title, content, imageUrl, UserId : req.session.userId})
         .then((data)=>{
             res.redirect('/home')
         })

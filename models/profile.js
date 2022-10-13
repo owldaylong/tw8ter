@@ -50,5 +50,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Profile',
   });
+  Profile.beforeCreate((profile) =>{
+    profile.profilePicture = 'https://cdn.vox-cdn.com/thumbor/y8j4Qx9DLd8J0vRbcFYq_I4-K5U=/305x0:620x300/1400x1050/filters:focal(465x142:466x143)/cdn0.vox-cdn.com/uploads/chorus_asset/file/8259403/twitter_eggandgumdrop.jpg'
+  })
   return Profile;
 };
