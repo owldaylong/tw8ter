@@ -1,5 +1,4 @@
 const isLoggedin = function (req, res, next) {
-    console.log(req.session);
     if(!req.session.userId) {
         const msg = 'You have to login first'
         res.redirect(`/login?error=${msg}`)
@@ -8,4 +7,13 @@ const isLoggedin = function (req, res, next) {
     }
 }
 
-module.exports = isLoggedin
+const isAdmin = function (req, res, next) {
+    if(!req.session.userId && !req.session.role) {
+        const msg = 'You need an admin permission'
+        res.redirect(`/login?error=${msg}`)
+    } else {
+        next()
+    }
+}
+
+module.exports = {isLoggedin, isAdmin}
