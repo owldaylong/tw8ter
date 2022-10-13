@@ -1,5 +1,5 @@
-const { User, Profile } = require("../models")
-const { Op } = require("sequelize")
+const { User, Profile, Post } = require("../models")
+const { Op, where } = require("sequelize")
 const bcrypt = require('bcryptjs')
 // const { getProfile } = require("./ProfileController")
 
@@ -69,9 +69,16 @@ class Controller {
     static home(req,res){
         let userData
         let profileData
-
+        let {search} = req.query
+        let optionPost = {
+            model : Post,
+            where : {}
+        }
+        if (search) {
+            options.where.content = {[Op.iLike] : `%${search}%`}
+        }
         User.findAll({
-            include: [Profile]
+            include: ['Profile',optionPost]
         })
         .then((data)=>{
             userData = data
