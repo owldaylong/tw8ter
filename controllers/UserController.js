@@ -1,4 +1,4 @@
-const { Model } = require("../models")
+const { User } = require("../models")
 const { Op } = require("sequelize")
 
 class Controller {
@@ -6,13 +6,13 @@ class Controller {
     static getRegister(req, res) {
         res.render("register-page")
     }
-    // post register form
+    // post register
     static postRegister(req, res) {
         const { username, email, password, role } = req.body
 
         User.create({ username, email, password, role })
             .then(newUser => {
-                res.redirect("/profile")
+                res.redirect(`/profile/${username}`)
             })
             .catch(err => {
                 res.send(err)

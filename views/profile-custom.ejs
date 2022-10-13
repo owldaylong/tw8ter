@@ -14,26 +14,25 @@
         }
     </style>
     <div class ="container">
-        <h1> Join Tw8ter Now </h1><br>
-        <form action="register" method="post">
+        <h1> Customize your profile </h1><br>
+        <form action="/profile" method="post">
+            <!-- <label for="profilePicture" class="form-label">Upload Profile Picture</label>
+            <div class="input-group mx-auto" style="width: 400px;">
+                <input type="file" class="form-control" id="upload" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+              </div><br> -->
             <div class="mx-auto" style="width: 400px;">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" name="username" class="form-control" id="username">
+              <label for="profilePicture" class="form-label">Profile Picture</label>
+              <input type="text" name="profilePicture" class="form-control" id="profilePicture">
             </div><br>
             <div class="mx-auto" style="width: 400px;">
-              <label for="email" class="form-label">Email</label>
-              <input type="email"  name="email" class="form-control" id="email">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text"  name="firstName" class="form-control" id="firstName">
             </div><br>
             <div class="mx-auto" style="width: 400px;">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" name="password" class="form-control" id="password">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" name="lastName" class="form-control" id="lastName">
             </div><br>
-            <label for="role" class="form-label">Role</label>
-            <select class="form-select mx-auto" name="role" style="width: 400px;" aria-label="Default select example">
-                <option selected disabled>-- SELECT ROLE --</option>
-                <option value="Admin">Admin</option>
-                <option value="user">User</option>
-            </select><br>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>
