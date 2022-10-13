@@ -3,6 +3,7 @@ const router = express.Router()
 const port = 3000
 const Landing = require("../controllers/landing")
 const Home = require("../controllers/UserController")
+const Post = require("../controllers/home")
 const register = require("./register")
 const profile = require("./profiles");
 // const posts = require("./post");
@@ -17,9 +18,9 @@ router.use("/login", login)
 router.use(isLoggedin)
 
 router.get("/home", Home.home)
+router.post("/home", Post.postPost)
 router.get("/logout", Home.logout )
 
-// router.use("/posts", posts)
 
 
 module.exports = router

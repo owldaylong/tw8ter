@@ -1,35 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tw8ter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TW8TER</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
 </head>
-<body style="background-color:#2f2828">
-    <style>
-        .container{
-            text-align: center;
-            justify-content: center;
-            padding-top: 10px;
-            width: 100;
-        }
 
-        h1{
-            color:white
-        }
+<body>
+    <!-- sidebar starts -->
+    <div class="sidebar">
+        <i class="fab fa-twitter"></i>
+        <div class="sidebarOption active">
+            <span class="material-icons"> home </span>
+            <h2>Home</h2>
+        </div>
+        <div class="sidebarOption">
+            <span class="material-icons"> list_alt </span>
+            <h2>Lists</h2>
+        </div>
 
-    </style>
-    <div class="container">
-        <h1>Home</h1>
+        <div class="sidebarOption">
+            <span class="material-icons"> perm_identity </span>
+            <h2>Profile</h2>
+        </div>
+
     </div>
-    
+    <!-- sidebar ends -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    <!-- feed starts -->
+    <div class="feed">
+        <div class="feed__header">
+            <h2>Home</h2>
+        </div>
+
+        <!-- tweetbox starts -->
+        <div class="tweetBox">
+            <form action="home" id="tweeting">
+                <div class="tweetbox__input">
+                    <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="" />
+                    <input type="text" id="tweetContent" placeholder="What's happening?" />
+                </div>
+                <button type="submit" class="tweetBox__tweetButton" id="tweet">Tweet</button>
+            </form>
+        </div>
+        <!-- tweetbox ends -->
+
+        <!-- post starts -->
+        <div class="post">
+            <div class="post__avatar">
+                <img src="<%= userData.imageURL %>" alt="" />
+            </div>
+
+            <div class="post__body">
+                <div class="post__header">
+                    <div class="post__headerText">
+                        <h3>
+                            <%= `${data.firstName}` %>
+                            <% userData.forEach(el=> { %>
+                                    <span class="post__headerSpecial"><span class="material-icons post__badge"> verified
+                                        </span>
+                                        <%= `@${el.username}` %>
+                                    </span>
+                            </h3>
+                        </div>
+                       
+                            <div class="post__headerDescription">
+                               
+                            </div>
+                        
+                        </div>
+                    </div>
+                        
+        </div>
+        <% }) %>
+            <!-- post ends -->
+    </div>
+    <!-- feed ends -->
+
+    <!-- widgets starts -->
+    <div class="widgets">
+        <form method="get">
+            <div class="widgets__input">
+                <span class="material-icons widgets__searchIcon"> search </span>
+                <input type="search" name="search" placeholder="Search Twitter" style="background-color: #1d252a" />
+            </div>
+        </form>
+
 </body>
 
 </html>
