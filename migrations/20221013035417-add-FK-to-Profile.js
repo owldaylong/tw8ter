@@ -4,31 +4,31 @@ const { query } = require('express');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up(queryInterface, Sequelize) {
+  up (queryInterface, Sequelize) {
     /**
      * Add altering commands here.
      *
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    return queryInterface.addColumn("Users", "ProfileId", {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Profiles',
-          key: 'id'
-        },
-        onUpdate: 'cascade',
-        onDelete: 'cascade'
+    return queryInterface.addColumn("Profiles", "UserId", {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onUpdate: 'cascade',
+      onDelete: 'cascade'
     })
   },
 
-  down(queryInterface, Sequelize) {
+  down (queryInterface, Sequelize) {
     /**
      * Add reverting commands here.
      *
      * Example:
      * await queryInterface.dropTable('users');
      */
-    return queryInterface.removeColumn("Users", "ProfileId", {})
+    return queryInterface.removeColumn("Profiles", "UserId", {})
   }
 };
