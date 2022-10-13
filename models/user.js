@@ -20,18 +20,21 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {msg: 'Username has been taken'},
       validate: {
         notNull: {msg: 'Fill the username'},
         notEmpty: {msg: 'Fill the username'},
-        max: {
-          args: [15],
-          msg: 'Maximum allowed characters are 15'
-        }
+        isLength(x){
+          if (x.length > 15) {
+            throw new Error('Maximum allowed characters are 15')
+          }
+        },
       },
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {msg: 'Email has already been used'},
       validate: {
         notNull: {msg: 'Fill the email'},
         notEmpty: {msg: 'Fill the email'},
