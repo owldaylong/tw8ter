@@ -15,6 +15,17 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Post)
       User.hasOne(models.Profile)
     }
+    static createUser(username, email, password, role){
+      let result = User.create({ username, email, password, role })
+      return result
+    }
+    showStatus(){
+      if (this.role === 'Admin') {
+        return 'Admin'
+      }else{
+        return ''
+      }
+    }
   }
   User.init({
     username: {

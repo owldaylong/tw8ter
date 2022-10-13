@@ -1,5 +1,5 @@
 class Controller {
-    static home(req, res){
+    static landing(req, res){
         res.render("landing-page")
     }
 }
