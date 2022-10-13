@@ -1,6 +1,7 @@
 const { User, Profile } = require("../models")
 const { Op } = require("sequelize")
-const { getProfile } = require("./ProfileController")
+const bcrypt = require('bcryptjs')
+// const { getProfile } = require("./ProfileController")
 
 class Controller {
     // get register form 
@@ -10,8 +11,7 @@ class Controller {
     // post register
     static postRegister(req, res) {
         const { username, email, password, role, firstName, lastName } = req.body
-
-        User.create({ username, email, password, role })
+        User.createUser(username, email, password, role)
             .then((createdUser) => {
                 return User.findOne({
                     where: {username}
@@ -27,6 +27,57 @@ class Controller {
                 res.send(err)
             })
     }
+    static renderLogin(req, res){
+        let {errors} = req.query
+        res.render('login-page')
+    }
+    static handlerLogin(req,res){
+        let {username, password} = req.body
+
+        User.findOne({
+            where: {username}
+        })
+        .then((login)=>{
+        if (login) {
+            const validPassword = bcrypt.compareSync(password, login.password)
+            if (validPassword) {
+                req.session.userId = login.id
+                req.session.role = login.role
+                res.redirect('/home')
+            } else {
+                const errors = 'Invalid password'
+                res.redirect(`/login?error=${errors}`)
+            }
+        } else {
+            const errors = 'Username does not exists'
+            res.redirect(`/login?error=${errors}`)
+        }
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+    static home(req,res){
+        let userData
+        let profileData
+
+        User.findAll({
+            include: [Profile]
+        })
+        .then((data)=>{
+            userData = data
+            console.log(data)
+            return Profile.findAll()
+        })
+        .then((data)=>{
+            profileData = data
+            return User.findByPk(req.session.userId)
+        })
+        .then((data)=>{
+            res.render('home', { userData, profileData, data})
+        })
+    }
+    
 }
 
 module.exports = Controller
