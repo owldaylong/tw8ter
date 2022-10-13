@@ -115,6 +115,16 @@ class Controller {
             res.send(err)
         })
     }
+    static handlePost(req,res) {
+        const { title, content, imgURL} = req.body
+        Post.create({ title, content, imgURL, UserId : req.session.userId})
+        .then(() => {
+            res.redirect('/home')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
     
 }
 
