@@ -5,7 +5,7 @@ const router = require("./routes")
 const session = require('express-session')
 
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/views'));
 app.use(session({
   secret: 'COOKIIEEE',
