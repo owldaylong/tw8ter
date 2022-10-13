@@ -91,6 +91,23 @@ class Controller {
         .then((data)=>{
             res.render('home', { userData, profileData, data})
         })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+    static deleteUser(req,res){
+        let id = req.params.id;
+        User.destroy({
+            where: { 
+                id
+            }
+        })
+        .then((data)=>{
+            res.redirect('/listUser')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
     }
     
 }
