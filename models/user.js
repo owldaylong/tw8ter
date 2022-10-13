@@ -20,18 +20,21 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {msg: 'Username has been taken'},
       validate: {
         notNull: {msg: 'Fill the username'},
         notEmpty: {msg: 'Fill the username'},
-        max: {
-          args: [15],
-          msg: 'Maximum allowed characters are 15'
-        }
+        isLength(x){
+          if (x.length > 15) {
+            throw new Error('Maximum allowed characters are 15')
+          }
+        },
       },
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {msg: 'Email has already been used'},
       validate: {
         notNull: {msg: 'Fill the email'},
         notEmpty: {msg: 'Fill the email'},
@@ -44,14 +47,13 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {msg: 'Fill the password'},
         notEmpty: {msg: 'Fill the password'},
-        max: {
-          args: [15],
-          msg: 'Maximum allowed password are 15'
+        isLength(pass){
+          if (pass.length > 15) {
+            throw new Error('Maximum allowed password are 15')
+          } else if (pass.length < 8) {
+            throw new Error('Minimum allowed password are 8')
+          }
         },
-        min:{
-          args: [8],
-          msg: 'Minimum allowed password are 8'
-        }
       },
     },
     role: {
