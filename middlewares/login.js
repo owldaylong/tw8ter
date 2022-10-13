@@ -8,9 +8,9 @@ const isLoggedin = function (req, res, next) {
 }
 
 const isAdmin = function (req, res, next) {
-    if(!req.session.userId && !req.session.role) {
+    if(req.session.userId && req.session.role != 'Admin') {
         const msg = 'You need an admin permission'
-        res.redirect(`/login?error=${msg}`)
+        res.redirect(`/home?error=${msg}`)
     } else {
         next()
     }
