@@ -75,7 +75,7 @@ class Controller {
             where : {}
         }
         if (search) {
-            options.where.content = {[Op.iLike] : `%${search}%`}
+            optionPost.where.content = {[Op.iLike] : `%${search}%`}
         }
         User.findAll({
             include: ['Profile',optionPost]
@@ -95,6 +95,12 @@ class Controller {
             res.send(err)
         })
     }
+    static renderUsersList(req,res){
+        User.findAll()
+        .then((data)=>{
+            res.render('users-list', {data})
+        })
+    }
     static deleteUser(req,res){
         let id = req.params.id;
         User.destroy({
@@ -103,7 +109,7 @@ class Controller {
             }
         })
         .then((data)=>{
-            res.redirect('/listUser')
+            res.redirect('/listUsers')
         })
         .catch((err) => {
             res.send(err)

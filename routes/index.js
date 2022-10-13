@@ -20,6 +20,9 @@ router.use(isLoggedin)
 router.get("/home", Home.home)
 router.post("/home", Post.postPost)
 router.get("/logout", Home.logout )
+router.use(isAdmin)
+router.get("/listUsers", Home.renderUsersList)
+router.get("/delete/:id", Home.deleteUser)
 
 
 
