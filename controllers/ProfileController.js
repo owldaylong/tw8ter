@@ -21,9 +21,6 @@ class Controller {
     static renderEdit(req,res){
         let id = req.params.id
         Profile.findByPk(id)
-        // Profile.findOne({
-        //     where: id
-        // })
         .then((profile)=>{
             res.render('profile-custom', {profile})
         })
