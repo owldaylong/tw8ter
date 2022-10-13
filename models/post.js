@@ -11,12 +11,31 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Post.belongsTo(models.User)
     }
   }
   Post.init({
     title: DataTypes.STRING,
-    content: DataTypes.STRING,
-    imgURL: DataTypes.STRING
+    content:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {msg: 'Fill the content'},
+        notEmpty: {msg: 'Fill the content'},
+        max: {
+          args: [280],
+          msg: 'Maximum allowed characters are 280'
+        }
+      },
+    },
+    imgURL: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Post',
