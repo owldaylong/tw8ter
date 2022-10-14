@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+body {
+  font-family: 'PT Sans', sans-serif; 
+}
+
+.top-bar {
+    margin: 10px 0 0;
+    height: 65px;
+    padding-bottom: 10px;
+}
+
+.top-bar div {
+  float: left;
+  vertical-align: middle;
+  line-height: 65px;
+}
+
+.search-container {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+}
+
+.search-container img {
+  width: 24px;
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+}
+
+.logout-container {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+}
+
+.logout-container img {
+  width: 24px;
+  vertical-align: middle;
+  position: relative;
+  bottom: 2px;
+}
+
+.logo-container {
+  width: 60%;
+  display: inline-block;  
+  text-align: center;
+}
+
+.logo-container img {
+  width: 30px;
+  vertical-align: middle;
+}
+
+.mobile-toggle-container {
+  width: 20%;
+  display: inline-block;
+  text-align: center;
+}
+
+.mobile-toggle-container img {
+  width: 24px;
+  vertical-align: middle;
+}
+
+.post-tweet {
+    background: #f7f7f7;
+    padding: 3% 15% 2%;
+    line-height: 90px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.post-tweet h3 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px 0;
+    line-height: 45px;
+    font-size: 32px;
+}
+
+.post-tweet form {
+    display: block;
+    vertical-align: middle;
+    margin: 0 auto 5%;
+    text-align: center;
+}
+
+.post-tweet form textarea {
+    width: 70%;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+    padding: 25px 15px;
+    font-size: 14px;
+    letter-spacing: .3px;
+    background: #fff;
+    border: none;
+    transition: all .3s ease;
+}
+
+.post-tweet form textarea:focus {
+    box-shadow: 0 10px 75px rgba(0, 0, 0, .05);
+    outline: none;
+}
+
+.post-tweet form button {
+    display: block;
+    margin: 25px auto 55px;
+    padding: 15px 35px;
+    background: #53afee;
+    border: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+    transition: all .3s ease;
+    box-shadow: 0 10px 55px rgba(0, 0, 0, .2);
+}
+
+.post-tweet button:hover {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.tweets {
+    background: #f7f7f7;
+    padding: 0 15% 4%;
+    width: 70%;
+    margin: 0 auto 50px;
+}
+
+.tweet-block {
+    width: 80%;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    line-height: 60px;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+.tweet-block:last-child {
+  border-bottom: none;
+}
+
+.tweet-block img {
+    display: inline-block;
+    vertical-align: middle;
+    float: left;
+    width: 45px;
+    margin: 6px 0;
+    padding: 0 1%;
+    border-radius: 50%;
+}
+
+span.tweet-content {
+    display: inline-block;
+    width: calc(100% - 98px);
+    margin-left: 3%;
+    margin-right: 0;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: .3px;
+    vertical-align: middle;
+}
+
+span.display-name {
+  margin-right: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+span.username {
+  margin-left: 7px;
+  font-size: 13px;
+}
+
+span.timestamp {
+  float: right;
+  font-size: 12px;
+}
+
+.tweet-links {
+    line-height: 15px;
+    text-align: right;
+}
+
+span.reply-tweet-link, span.retweet-tweet-link, span.like-tweet-link {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+span.reply-tweet-link a img, span.retweet-tweet-link a img, span.like-tweet-link a img {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    width: 15px;
+    border-radius: 0;
+    opacity: 0;
+    transition: all .2s ease;
+}
+
+.tweet-block:hover span.reply-tweet-link a img, .tweet-block:hover span.retweet-tweet-link a img, .tweet-block:hover span.like-tweet-link a img {
+  opacity: 1;
+}

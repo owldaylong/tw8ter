@@ -6,7 +6,8 @@ const bcrypt = require('bcryptjs')
 class Controller {
     // get register form 
     static getRegister(req, res) {
-        res.render("register-page")
+        let {errors} = req.query
+        res.render("register-page", {errors})
     }
     // post register
     static postRegister(req, res) {
@@ -24,12 +25,14 @@ class Controller {
                 res.redirect("/")
             })
             .catch((err) => {
-                res.send(err)
+                let errors = err.errors.map(el=> el.message)
+                // res.send(err)
+                res.redirect(`/register?errors=${errors}`)
             })
     }
     static renderLogin(req, res){
         let {errors} = req.query
-        res.render('login-page')
+        res.render('login-page', {errors})
     }
     static handlerLogin(req,res){
         let {username, password} = req.body
@@ -46,11 +49,11 @@ class Controller {
                 res.redirect('/home')
             } else {
                 const errors = 'Invalid password'
-                res.redirect(`/login?error=${errors}`)
+                res.redirect(`/login?errors=${errors}`)
             }
         } else {
             const errors = 'Username does not exists'
-            res.redirect(`/login?error=${errors}`)
+            res.redirect(`/login?errors=${errors}`)
         }
         })
         .catch((err) => {
@@ -69,6 +72,7 @@ class Controller {
     static home(req,res){
         let userData
         let profileData
+        let {errors} = req.query
         let {search} = req.query
         let optionPost = {
             model : Post,
@@ -82,6 +86,7 @@ class Controller {
         })
         .then((data)=>{
             userData = data
+            console.log(userData[0].Profile.profilePicture);
             return Profile.findAll()
         })
         .then((data)=>{
@@ -89,7 +94,7 @@ class Controller {
             return User.findByPk(req.session.userId)
         })
         .then((data)=>{
-            res.render('home', { userData, profileData, data})
+            res.render('home', { userData, profileData, data, errors})
         })
         .catch((err) => {
             res.send(err)

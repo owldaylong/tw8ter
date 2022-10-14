@@ -8,9 +8,9 @@ class Controller {
     }
     // create profile 
     static createProfile(req, res) {
-        const { profilePicture, firstName, lastName } = req.body
+        const { firstName, lastName } = req.body
 
-        Profile.create({ profilePicture, firstName, lastName})
+        Profile.create({ firstName, lastName})
             .then(newProfile => {
                 res.redirect("/home")
             })
