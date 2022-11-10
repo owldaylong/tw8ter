@@ -42,7 +42,7 @@
       <% userData.forEach((el) => { %>
             <% el.Posts.forEach((post) => { %>
                 <div class="tweet-block">
-                    <img src="<%=el.Profile.profilePicture%>" alt="profile photo" /><br>
+                  <img src="/<%= el.Profile.profilePicture%>" width="50" height="50"><br>
                     <span class="tweet-content"><span class="display-name"><%= el.username %></span>•<span class="username">@<%= el.username %></span><br><%= post.content%></span>
                     <div class="tweet-links">
                     <span class="reply-tweet-link"><a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134295/speech-bubble.png" alt="reply tweet" /></a></span>

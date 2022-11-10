@@ -76,6 +76,7 @@ class Controller {
         let {search} = req.query
         let optionPost = {
             model : Post,
+            Order: [['createdAt', 'ASC']],
             where : {}
         }
         if (search) {
