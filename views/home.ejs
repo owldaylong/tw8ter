@@ -1,56 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
     <div class="top-bar">
-            <%= errors %> 
-            <%= data.showStatus() %>
-            <div class="logo-container">
-                <a href="/home"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533139132/website-home-page.png" alt="profile logo" /></a>
-                <a href="/profile/<%= data.id %>"><button style="background-color: blue; color: white;">profile Edit</button></a>
-            </div>
-            <% if(data.role == 'Admin') { %>
-              <div class="logout-container">
-                <a href="/listUsers"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533118808/menu-button-of-three-horizontal-lines.png" alt="menu-icon" /></a>
-              </div>
-              <% } %> 
-            <div class="mobile-toggle-container">
-          <img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533118681/musica-searcher.png" alt="search-icon" />
-          <form method="get">
-            <input type="text" placeholder="search by post" name="search" class="form-control marginSearch" id="exampleFormControlInput1" style="width: 30%;">
-            <input type="submit" value="Search" class="btn btn-primary">
-          </form>
-          <a style="margin-left: 100px;" href="/logout"><button style="background-color: blue; color: white;">logout</button></a>    
-         </div>
-        </div> 
+      <%= errors %> <%= data.showStatus() %>
+      <div class="logo-container">
+        <a href="/home"
+          ><img
+            src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533139132/website-home-page.png"
+            alt="profile logo"
+        /></a>
+        <a href="/profile/<%= data.id %>"
+          ><button style="background-color: blue; color: white">
+            profile Edit
+          </button></a
+        >
+      </div>
+      <% if(data.role == 'Admin') { %>
+      <div class="logout-container">
+        <a href="/listUsers"
+          ><img
+            src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533118808/menu-button-of-three-horizontal-lines.png"
+            alt="menu-icon"
+        /></a>
+      </div>
+      <% } %>
+      <div class="mobile-toggle-container">
+        <img
+          src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533118681/musica-searcher.png"
+          alt="search-icon"
+        />
+        <form method="get">
+          <input
+            type="text"
+            placeholder="search by post"
+            name="search"
+            class="form-control marginSearch"
+            id="exampleFormControlInput1"
+            style="width: 30%"
+          />
+          <input type="submit" value="Search" class="btn btn-primary" />
+        </form>
+        <a style="margin-left: 100px" href="/logout"
+          ><button style="background-color: blue; color: white">
+            logout
+          </button></a
+        >
+      </div>
+    </div>
 
-      
-      <div class="post-tweet">
-        <h3>Tw8 away</h3> 
-        <form action="/home" method="post">
-          <textarea name="content"></textarea>
-          <button type="submit">Post</button>
-        </form> 
-      </div> 
+    <div class="post-tweet">
+      <h3>Tw8 away</h3>
+      <form action="/home" method="post">
+        <textarea name="content"></textarea>
+        <button type="submit">Post</button>
+      </form>
+    </div>
 
-      <% userData.forEach((el) => { %>
-            <% el.Posts.forEach((post) => { %>
-                <div class="tweet-block">
-                  <img src="/<%= el.Profile.profilePicture%>" width="50" height="50"><br>
-                    <span class="tweet-content"><span class="display-name"><%= el.username %></span>•<span class="username">@<%= el.username %></span><br><%= post.content%></span>
-                    <div class="tweet-links">
-                    <span class="reply-tweet-link"><a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134295/speech-bubble.png" alt="reply tweet" /></a></span>
-                    <span class="retweet-tweet-link"><a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134296/retweet.png" alt="retweet tweet" /></a></span>
-                    <span class="like-tweet-link"><a href="#"><img src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134295/star.png" alt="like tweet" /></a></span>
-                    </div> 
-               </div> 
-          <%  }) %> 
-      <% }) %> 
-</body>
+    <% userData.forEach((el) => { %> <% el.Posts.forEach((post) => { %>
+    <div class="tweet-block">
+      <img
+        src="<%= el.Profile.profilePicture%>"
+        width="50"
+        height="50"
+      /><br />
+      <span class="tweet-content"
+        ><span class="display-name"><%= el.username %></span>•<span
+          class="username"
+          >@<%= el.username %></span
+        ><br /><%= post.content%></span
+      >
+      <div class="tweet-links">
+        <span class="reply-tweet-link"
+          ><a href="#"
+            ><img
+              src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134295/speech-bubble.png"
+              alt="reply tweet" /></a
+        ></span>
+        <span class="retweet-tweet-link"
+          ><a href="#"
+            ><img
+              src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134296/retweet.png"
+              alt="retweet tweet" /></a
+        ></span>
+        <span class="like-tweet-link"
+          ><a href="#"
+            ><img
+              src="https://res.cloudinary.com/jorpdesigns/image/upload/v1533134295/star.png"
+              alt="like tweet" /></a
+        ></span>
+      </div>
+    </div>
+    <% }) %> <% }) %>
+  </body>
 </html>

@@ -5,6 +5,7 @@ const router = require("./routes")
 const session = require('express-session')
 
 app.set('view engine', 'ejs');
+app.use(express.static('images'))
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('images'))
 app.use(express.static(__dirname + '/views'));
